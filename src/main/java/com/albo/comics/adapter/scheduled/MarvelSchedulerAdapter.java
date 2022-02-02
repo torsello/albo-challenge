@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class MarvelSchedulerAdapter {
 
@@ -24,12 +27,11 @@ public class MarvelSchedulerAdapter {
         this.taskCommand = taskCommand;
     }
 
-    //@Scheduled(cron = CRON_EXPRESSION)
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(cron = CRON_EXPRESSION)
     public void verifyMarvelInformation() {
         log.info("Comienza tarea de revision diaria");
-        /*List<String> characterNames = Arrays.asList(marvelCharacters.split(","));
-        taskCommand.dailyRevision(characterNames);*/
+        List<String> characterNames = Arrays.asList(marvelCharacters.split(","));
+        taskCommand.dailyRevision(characterNames);
     }
 
 }

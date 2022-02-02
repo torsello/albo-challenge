@@ -14,8 +14,19 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.3'
+	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:3.1.0'
+	implementation 'io.micrometer:micrometer-core:1.8.2'
+	implementation 'org.slf4j:slf4j-api:1.7.35'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.6.3'
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	testCompileOnly 'org.projectlombok:lombok:1.18.22'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 }
 
 tasks.named('test') {
